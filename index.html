@@ -13,51 +13,55 @@
 </head>
 
 <body>
-    <header>
-        <h1>
-            VSP Source Locator
-            <img src="assets/images/Rig-logo.png" alt="Oil rig log">
-        </h1>
-    </header>
-    <main>
-        <div id="input-area">
-            <div id="instruction-area">
-                <p>Instructions</p>
-            </div>
-            <div id="well-input">
-                <p>Input Wellhead Location</p>
-                <p>Wellhead X</p>
-                <input type="number">
-                <p>Wellhead Y</p>
-                <input type="number">
-            </div>
-            <div id="source-input">
-                <p>Input Source Location</p>
-                <p>Source X</p>
-                <input type="number">
-                <p>Source Y</p>
-                <input type="number">
-                <p>OR</p>
-                <p>Source Offset</p>
-                <input type="number">
-                <p>Source Azimuth (degrees from north)</p>
-                <input type="number" min="0" max="360">
-            </div>
-            <button data-type="calculate">Calculate!</button>
-            <button data-type="add">Add Source</button>
+    <div class="locator-area">
+        <div id="heading">
+            <img id="logo" src="assets/images/rig-logo.png" alt="Oil rig log">
+            <h1>
+                VSP Source Locator
+            </h1>
         </div>
-        <div id="result-area">
-            <p>Calculated Source Locations</p>
-            <ol>
-                <li>X = 50, Y = 100, Offset = 111.8, Azimuth = 26.6&deg;N</li>
-                <li>X = 50, Y = 100, Offset = 111.8, Azimuth = 26.6&deg;N</li>
-            </ol>
-            <button data-type="create">Create Plan</button>
-            <button data-type="clear">Clear</button>
+        <div id="calculator">
+            <div id="input-area">
+                <div id="instruction-area">
+                    <p>This is a utility to calculate the location of a single or selection of VSP sources. It
+                        calculates source X and Y coordinates from the offset and azimuth from the wellhead and vice
+                        versa. The calculations are not unique to a VSP survey and it could be used to calculate the
+                        distance between any two fixed points.</p>
+                </div>
+                <div id="well-input">
+                    <p>Input Wellhead Location</p>
+                    <p>Wellhead X</p>
+                    <input type="number">
+                    <p>Wellhead Y</p>
+                    <input type="number">
+                </div>
+                <div id="source-input">
+                    <p>Input Source Location</p>
+                    <p>Source X</p>
+                    <input type="number">
+                    <p>Source Y</p>
+                    <input type="number">
+                    <p>OR</p>
+                    <p>Source Offset</p>
+                    <input type="number">
+                    <p>Source Azimuth (degrees from north)</p>
+                    <input type="number" min="0" max="360">
+                </div>
+                <button data-type="calculate">Calculate!</button>
+                <button data-type="add">Add Source</button>
+            </div>
+            <div id="result-area">
+                <p>Calculated Source Locations</p>
+                <ol>
+                    <li>X = 50, Y = 100, Offset = 111.8, Azimuth = 26.6&deg;N</li>
+                    <li>X = 50, Y = 100, Offset = 111.8, Azimuth = 26.6&deg;N</li>
+                </ol>
+                <button data-type="create">Create Plan</button>
+                <button data-type="clear">Clear</button>
+            </div>
+            <div id="plan-area"></div>
         </div>
-        <div id="plan-area"></div>
-    </main>
-
+    </div>
 
 
 
