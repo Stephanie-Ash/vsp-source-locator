@@ -1,15 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site for calculate VSP source locations in relation to the Wellhead">
+    <meta name="keywords" content="VSP, source, well, wellhead, calculator, locator">
+
     <link rel="stylesheet" href="assets/css/style.css">
     <title>VSP Source Locator</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1>
+            VSP Source Locator
+            <img src="assets/images/Rig-logo.png" alt="Oil rig log">
+        </h1>
+    </header>
+    <main>
+        <div id="input-area">
+            <div id="instruction-area">
+                <p>Instructions</p>
+            </div>
+            <div id="well-input">
+                <p>Input Wellhead Location</p>
+                <p>Wellhead X</p>
+                <input type="number">
+                <p>Wellhead Y</p>
+                <input type="number">
+            </div>
+            <div id="source-input">
+                <p>Input Source Location</p>
+                <p>Source X</p>
+                <input type="number">
+                <p>Source Y</p>
+                <input type="number">
+                <p>OR</p>
+                <p>Source Offset</p>
+                <input type="number">
+                <p>Source Azimuth (degrees from north)</p>
+                <input type="number" min="0" max="360">
+            </div>
+            <button data-type="calculate">Calculate!</button>
+            <button data-type="add">Add Source</button>
+        </div>
+        <div id="result-area">
+            <p>Calculated Source Locations</p>
+            <ol>
+                <li>X = 50, Y = 100, Offset = 111.8, Azimuth = 26.6&deg;N</li>
+                <li>X = 50, Y = 100, Offset = 111.8, Azimuth = 26.6&deg;N</li>
+            </ol>
+            <button data-type="create">Create Plan</button>
+            <button data-type="clear">Clear</button>
+        </div>
+        <div id="plan-area"></div>
+    </main>
+
+
+
 
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
