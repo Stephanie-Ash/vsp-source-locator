@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
  * Gets and checks the input values from the DOM
  * and runs the appropriate calculation
  */
-
 function getValues() {
     let whX = parseFloat(document.getElementById("wh-x").value);
     let whY = parseFloat(document.getElementById("wh-y").value);
@@ -20,14 +19,15 @@ function getValues() {
     let srcOffset = parseFloat(document.getElementById("src-off").value);
     let srcAzimuth = parseFloat(document.getElementById("src-az").value);
 
-    if (!whX || !whY) {
+    if (!whX && whX !== 0 || !whY && whY !== 0) {
         alert("Enter Wellhead X and Y Coordinates");
-    } else if (srcX && srcY) {
+    } else if (srcAzimuth > 360 || srcAzimuth < 0) {
+        alert("Source Azimuth is outside of acceptable 0 to 360 range");
+    } else if ((srcX || srcX === 0) && (srcY || srcY === 0)) {
         calculateSourceA(whX, whY, srcX, srcY);
-    } else if (srcOffset && srcAzimuth) {
+    } else if ((srcOffset || srcOffset === 0) && (srcAzimuth || srcAzimuth === 0)) {
         calculateSourceB(whX, whY, srcOffset, srcAzimuth);
     } else {
         alert("Enter Source X and Y or Offset and Azimuth");
     }
-
 }
