@@ -30,6 +30,13 @@ function getValues() {
     } else {
         alert("Enter Source X and Y or Offset and Azimuth");
     }
+
+    let inputs = document.getElementsByClassName("input-box")
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+    }
+
+    document.getElementById("wh-x").focus();
 }
 
 /**
