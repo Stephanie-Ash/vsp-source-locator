@@ -31,3 +31,24 @@ function getValues() {
         alert("Enter Source X and Y or Offset and Azimuth");
     }
 }
+
+/**
+ * Takes the wellhead and source X and Y inputs
+ * and calculates the source offset and azimuth
+ */
+function calculateSourceA(whX, whY, srcX, srcY) {
+    let offsetX = srcX - whX;
+    let offsetY = srcY - whY;
+    let srcOffset = (offsetX ** 2 + offsetY ** 2) ** (1/2);
+    let srcAngle = (Math.atan(offsetY/offsetX)) / (Math.PI / 180);
+    let srcAzimuth;
+
+    if (offsetX < 1) {
+        srcAzimuth = 270 - srcAngle;
+    } else {
+        srcAzimuth = 90 - srcAngle;
+    }
+
+    console.log(srcOffset);
+    console.log(srcAzimuth);
+}
