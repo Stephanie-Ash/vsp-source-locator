@@ -52,3 +52,36 @@ function calculateSourceA(whX, whY, srcX, srcY) {
     console.log(srcOffset);
     console.log(srcAzimuth);
 }
+
+/**
+ * Takes the wellhead and source offset and azimuth inputs
+ * and calculates the source X and Y
+ */
+
+function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
+    let srcAngle;
+
+    if (srcAzimuth < 180) {
+        srcAngle = 90 - srcAzimuth;
+    } else {
+        srcAngle = 270 - srcAzimuth;
+    }
+
+    let srcAngleR = srcAngle * (Math.PI / 180);
+    let offsetX;
+    let offsetY;
+
+    if (srcAzimuth < 180) {
+        offsetY = Math.sin(srcAngleR) * srcOffset;
+        offsetX = Math.cos(srcAngleR) * srcOffset;
+    } else {
+        offsetY = Math.sin(srcAngleR) * -srcOffset;
+        offsetX = Math.cos(srcAngleR) * -srcOffset;
+    }
+
+    let srcX = offsetX + whX;
+    let srcY = offsetY + whY;
+
+    console.log(srcX);
+    console.log(srcY);
+}
