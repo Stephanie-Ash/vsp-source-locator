@@ -56,8 +56,14 @@ function calculateSourceA(whX, whY, srcX, srcY) {
         srcAzimuth = 90 - srcAngle;
     }
 
-    console.log(srcOffset);
-    console.log(srcAzimuth);
+    let source = {
+        x: srcX,
+        y: srcY,
+        offset: srcOffset,
+        azimuth: srcAzimuth
+    };
+
+    displayResults(source);
 }
 
 /**
@@ -89,6 +95,19 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
     let srcX = offsetX + whX;
     let srcY = offsetY + whY;
 
-    console.log(srcX);
-    console.log(srcY);
+    let source = {
+        x: srcX,
+        y: srcY,
+        offset: srcOffset,
+        azimuth: srcAzimuth
+    };
+
+    displayResults(source);
+}
+
+function displayResults(source) {
+    document.getElementById("result-area").style.display = "inherit";
+    let sourceInformation = document.createElement("p");
+    sourceInformation.innerHTML = `X = ${source} hopefully!`
+    document.getElementById("result-area").appendChild(sourceInformation);
 }
