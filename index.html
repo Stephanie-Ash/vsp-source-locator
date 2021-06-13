@@ -39,26 +39,27 @@
             <div class="input-wrapper">
                 <h2>Input Wellhead Location</h2>
                 <p class="inputs">X =</p>
-                <input type="number" class="inputs">
+                <input type="number" class="inputs" id="wh-x">
                 <p class="inputs">Y =</p>
-                <input type="number" class="inputs">
+                <input type="number" class="inputs" id="wh-y">
             </div>
             <div class="input-wrapper">
                 <h2>Input Source Location</h2>
                 <p class="inputs">X =</p>
-                <input type="number" class="inputs">
+                <input type="number" class="inputs" id="src-x">
                 <p class="inputs">Y =</p>
-                <input type="number" class="inputs">
+                <input type="number" class="inputs" id="src-y">
                 <p class="inputs" id="separator">OR</p>
                 <p class="inputs">Offset =</p>
-                <input type="number" class="inputs">
+                <input type="number" class="inputs" id="src-off">
                 <p class="inputs">Azimuth =</p>
-                <input type="number" min="0" max="360" class="inputs">
+                <input type="number" min="0" max="360" class="inputs" id="src-az">
             </div>
-            <button data-type="calculate" class="buttons">Calculate!</button>
+            <button data-type="calculate" class="buttons" id="calculate">Calculate!</button>
             <button data-type="add" class="buttons buttons-wide add">Add Source</button>
         </div>
         <div id="result-area">
+            <h2>Calculated Source Locations</h2>
         </div>
         <div id="plan-area"></div>
     </div>
