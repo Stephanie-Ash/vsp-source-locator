@@ -57,10 +57,10 @@ function calculateSourceA(whX, whY, srcX, srcY) {
     }
 
     let source = {
-        x: srcX,
-        y: srcY,
-        offset: srcOffset,
-        azimuth: srcAzimuth
+        x: Math.round(srcX * Math.pow(10,1)) / Math.pow(10,1),
+        y: Math.round(srcY * Math.pow(10,1)) / Math.pow(10,1),
+        offset: Math.round(srcOffset * Math.pow(10,1)) / Math.pow(10,1),
+        azimuth: Math.round(srcAzimuth * Math.pow(10,1)) / Math.pow(10,1)
     };
 
     displayResults(source);
@@ -96,10 +96,10 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
     let srcY = offsetY + whY;
 
     let source = {
-        x: srcX,
-        y: srcY,
-        offset: srcOffset,
-        azimuth: srcAzimuth
+        x: Math.round(srcX * Math.pow(10,1)) / Math.pow(10,1),
+        y: Math.round(srcY * Math.pow(10,1)) / Math.pow(10,1),
+        offset: Math.round(srcOffset * Math.pow(10,1)) / Math.pow(10,1),
+        azimuth: Math.round(srcAzimuth * Math.pow(10,1)) / Math.pow(10,1)
     };
 
     displayResults(source);
@@ -107,7 +107,10 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
 
 function displayResults(source) {
     document.getElementById("result-area").style.display = "inherit";
-    let sourceInformation = document.createElement("p");
-    sourceInformation.innerHTML = `X = ${source} hopefully!`
-    document.getElementById("result-area").appendChild(sourceInformation);
+    let sourceInformation = document.getElementsByClassName("results");
+
+    sourceInformation[0].innerHTML = `X Coordinate: &nbsp; ${source.x}`;
+    sourceInformation[1].innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
+    sourceInformation[2].innerHTML = `Offset: &nbsp; ${source.offset}`;
+    sourceInformation[3].innerHTML = `Azimuth: &nbsp; ${source.azimuth}`;
 }
