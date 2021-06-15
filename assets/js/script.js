@@ -91,23 +91,39 @@ function calculateSourceA(whX, whY, srcX, srcY) {
 
 function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
     let srcAngle;
-
-    if (srcAzimuth < 180) {
-        srcAngle = 90 - srcAzimuth;
-    } else {
-        srcAngle = 270 - srcAzimuth;
-    }
-
-    let srcAngleR = srcAngle * (Math.PI / 180);
     let offsetX;
     let offsetY;
 
-    if (srcAzimuth < 180) {
-        offsetY = Math.sin(srcAngleR) * srcOffset;
-        offsetX = Math.cos(srcAngleR) * srcOffset;
+    if (srcOffset === 0) {
+        alert("Source at Wellhead, no calculation required!");
+    } else if (srcAzimuth === 360 || srcAzimuth === 0) {
+        offsetX = 0;
+        offsetY = srcOffset;
+    } else if (srcAzimuth === 90) {
+        offsetX = srcOffset;
+        offsetY = 0;
+    } else if (srcAzimuth === 180) {
+        offsetX = 0;
+        offsetY = -srcOffset;
+    } else if (srcAzimuth === 270) {
+        offsetX = -srcOffset;
+        offsetY = 0;
     } else {
-        offsetY = Math.sin(srcAngleR) * -srcOffset;
-        offsetX = Math.cos(srcAngleR) * -srcOffset;
+        if (srcAzimuth < 180) {
+            srcAngle = 90 - srcAzimuth;
+        } else {
+            srcAngle = 270 - srcAzimuth;
+        }
+    
+        let srcAngleR = srcAngle * (Math.PI / 180);
+            
+        if (srcAzimuth < 180) {
+            offsetY = Math.sin(srcAngleR) * srcOffset;
+            offsetX = Math.cos(srcAngleR) * srcOffset;
+        } else {
+            offsetY = Math.sin(srcAngleR) * -srcOffset;
+            offsetX = Math.cos(srcAngleR) * -srcOffset;
+        }
     }
 
     let srcX = offsetX + whX;
@@ -122,6 +138,7 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
 
     displayResults(source);
 }
+
 
 function displayResults(source) {
     document.getElementById("result-area").style.display = "inherit";
