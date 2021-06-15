@@ -46,23 +46,41 @@ function getValues() {
 function calculateSourceA(whX, whY, srcX, srcY) {
     let offsetX = srcX - whX;
     let offsetY = srcY - whY;
-    let srcOffset = (offsetX ** 2 + offsetY ** 2) ** (1/2);
-    let srcAngle = (Math.atan(offsetY/offsetX)) / (Math.PI / 180);
+    let srcOffset;
     let srcAzimuth;
 
-    if (offsetX < 1) {
-        srcAzimuth = 270 - srcAngle;
+    if (offsetX === 0 && offsetY === 0) {
+        alert("Source at Wellhead, no calculation required!");
+    } else if (offsetX === 0 && offsetY < 0) {
+        srcOffset = offsetY;
+        srcAzimuth = 180;
+    } else if (offsetX === 0 && offsetY > 0) {
+        srcOffset = offsetY;
+        srcAzimuth = 360;
+    } else if (offsetY === 0 && offsetX < 0) {
+        srcOffset = offsetX;
+        srcAzimuth = 270;
+    } else if (offsetY === 0 && offsetX > 0) {
+        srcOffset = offsetX;
+        srcAzimuth = 90;
     } else {
-        srcAzimuth = 90 - srcAngle;
-    }
+        srcOffset = (offsetX ** 2 + offsetY ** 2) ** (1/2);
+        let srcAngle = (Math.atan(offsetY / offsetX)) / (Math.PI / 180);
 
+        if (offsetX < 1) {
+            srcAzimuth = 270 - srcAngle;
+        } else {
+            srcAzimuth = 90 - srcAngle;
+        }
+    }
+    
     let source = {
         x: Math.round(srcX * Math.pow(10,1)) / Math.pow(10,1),
         y: Math.round(srcY * Math.pow(10,1)) / Math.pow(10,1),
         offset: Math.round(srcOffset * Math.pow(10,1)) / Math.pow(10,1),
         azimuth: Math.round(srcAzimuth * Math.pow(10,1)) / Math.pow(10,1)
-    };
-
+        };
+    
     displayResults(source);
 }
 
