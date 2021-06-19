@@ -197,6 +197,7 @@ function displayResults(source) {
     listEntry.appendChild(listAzimuth);   
 
     document.getElementById("add").style.display = "inline-block";
+    document.getElementById("create").style.display = "inherit"
 }
 
 function displayList(source) {
