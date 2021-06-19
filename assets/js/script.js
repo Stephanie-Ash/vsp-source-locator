@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function() {
             let buttonType;
             if (this.getAttribute("data-type") === "calculate") {
                 buttonType = "calculate";
-            } else {
-                buttonType = "add"
-            }
-
-            getValues(buttonType);
+                getValues(buttonType);
+            } else if (this.getAttribute("data-type") === "add") {
+                buttonType = "add";
+                getValues(buttonType);
+            } else drawChart()
         })
     }
 })
@@ -200,6 +200,9 @@ function displayResults(source) {
     document.getElementById("create").style.display = "inherit"
 }
 
+/**
+ * Appends calculated values to an html list
+ */
 function displayList(source) {
     document.getElementById("result-area").style.display = "none";
     document.getElementById("result-list").style.display = "inherit";
@@ -226,4 +229,29 @@ function displayList(source) {
     listEntry.appendChild(listY);
     listEntry.appendChild(listOffset);
     listEntry.appendChild(listAzimuth);   
+}
+
+function drawChart() {
+    document.getElementById('plan-area').style.display = "inherit";
+    
+    let data = google.visualization.arrayToDataTable([
+        ['Age', 'Weight'],
+        [ 8,      12],
+        [ 4,      5.5],
+        [ 11,     14],
+        [ 4,      5],
+        [ 3,      3.5],
+        [ 6.5,    7]
+      ]);
+
+      let options = {
+        title: 'Age vs. Weight comparison',
+        hAxis: {title: 'Age', minValue: 0, maxValue: 15},
+        vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
+        legend: 'none'
+      };
+
+      let chart = new google.visualization.ScatterChart(document.getElementById('plan-area'));
+
+      chart.draw(data, options);
 }
