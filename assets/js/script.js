@@ -38,7 +38,6 @@ function getValues() {
         inputs[i].value = "";
     }
 
-    document.getElementById("wh-x").focus();
 }
 
 /**
