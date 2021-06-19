@@ -167,3 +167,31 @@ function displayResults(source) {
         getValues(buttonType);
     })
 }
+
+function displayList(source) {
+    document.getElementById("result-area").style.display = "none";
+    document.getElementById("result-list").style.display = "inherit";
+
+    let listEntry = document.createElement('li');
+    document.getElementById("list").appendChild(listEntry);
+
+    let listX = document.createElement('span');
+    let listY = document.createElement('span');
+    let listOffset = document.createElement('span');
+    let listAzimuth = document.createElement('span');
+
+    listX.setAttribute("class", "results-list");
+    listY.setAttribute("class", "results-list");
+    listOffset.setAttribute("class", "results-list");
+    listAzimuth.setAttribute("class", "results-list");
+    
+    listX.innerHTML = `X Coordinate: &nbsp; ${source.x}`;
+    listY.innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
+    listOffset.innerHTML = `Offset: &nbsp; ${source.offset}`;
+    listAzimuth.innerHTML = `Azimuth: &nbsp; ${source.azimuth}&degN`;
+
+    listEntry.appendChild(listX);
+    listEntry.appendChild(listY);
+    listEntry.appendChild(listOffset);
+    listEntry.appendChild(listAzimuth);   
+}
