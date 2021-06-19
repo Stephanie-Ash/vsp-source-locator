@@ -2,10 +2,20 @@
 // Get the Calculate button and add event listener
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("calculate").addEventListener("click", function() {
-        let buttonType = 'calculate';
-        getValues(buttonType);
-    })
+    let buttons = document.getElementsByTagName("button");
+
+    for (let button of buttons) {
+        button.addEventListener("click", function() {
+            let buttonType;
+            if (this.getAttribute("data-type") === "calculate") {
+                buttonType = "calculate";
+            } else {
+                buttonType = "add"
+            }
+
+            getValues(buttonType);
+        })
+    }
 })
 
 /**
@@ -186,12 +196,7 @@ function displayResults(source) {
     listEntry.appendChild(listOffset);
     listEntry.appendChild(listAzimuth);   
 
-    let addSrc = document.getElementById("add");
-    addSrc.style.display = "inline-block";
-    addSrc.addEventListener("click", function() {
-        let buttonType = 'add';
-        getValues(buttonType);
-    })
+    document.getElementById("add").style.display = "inline-block";
 }
 
 function displayList(source) {
