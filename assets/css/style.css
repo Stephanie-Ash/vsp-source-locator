@@ -124,6 +124,33 @@ input {
     margin-right: 12px;
 }
 
+/* result list */
+
+#result-list {
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+    display: none;
+}
+
+#result-list > h2 {
+    margin: 30px 10px 10px 10px;
+    padding: 5px 0 5px 0;
+}
+
+#result-list > ol {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.results-list {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
 /* buttons */
 
 .buttons {

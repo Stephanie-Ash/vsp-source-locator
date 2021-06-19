@@ -88,7 +88,6 @@ function calculateSourceA(whX, whY, srcX, srcY) {
  * Takes the wellhead and source offset and azimuth inputs
  * and calculates the source X and Y
  */
-
 function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
     let srcAngle;
     let offsetX;
@@ -139,7 +138,9 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
     displayResults(source);
 }
 
-
+/**
+ * Displays calculated values in the DOM
+ */
 function displayResults(source) {
     document.getElementById("result-area").style.display = "inherit";
     let sourceInformation = document.getElementsByClassName("results");
@@ -147,5 +148,5 @@ function displayResults(source) {
     sourceInformation[0].innerHTML = `X Coordinate: &nbsp; ${source.x}`;
     sourceInformation[1].innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
     sourceInformation[2].innerHTML = `Offset: &nbsp; ${source.offset}`;
-    sourceInformation[3].innerHTML = `Azimuth: &nbsp; ${source.azimuth}`;
+    sourceInformation[3].innerHTML = `Azimuth: &nbsp; ${source.azimuth}&degN`;
 }
