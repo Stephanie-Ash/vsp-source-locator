@@ -153,12 +153,38 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
  */
 function displayResults(source) {
     document.getElementById("result-area").style.display = "inherit";
+    document.getElementById("list").innerHTML ="";
+    document.getElementById("result-list").style.display = "none";
+
     let sourceInformation = document.getElementsByClassName("results");
 
     sourceInformation[0].innerHTML = `X Coordinate: &nbsp; ${source.x}`;
     sourceInformation[1].innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
     sourceInformation[2].innerHTML = `Offset: &nbsp; ${source.offset}`;
     sourceInformation[3].innerHTML = `Azimuth: &nbsp; ${source.azimuth}&degN`;
+
+    let listEntry = document.createElement('li');
+    document.getElementById("list").appendChild(listEntry);
+
+    let listX = document.createElement('span');
+    let listY = document.createElement('span');
+    let listOffset = document.createElement('span');
+    let listAzimuth = document.createElement('span');
+
+    listX.setAttribute("class", "results-list");
+    listY.setAttribute("class", "results-list");
+    listOffset.setAttribute("class", "results-list");
+    listAzimuth.setAttribute("class", "results-list");
+    
+    listX.innerHTML = `X Coordinate: &nbsp; ${source.x}`;
+    listY.innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
+    listOffset.innerHTML = `Offset: &nbsp; ${source.offset}`;
+    listAzimuth.innerHTML = `Azimuth: &nbsp; ${source.azimuth}&degN`;
+
+    listEntry.appendChild(listX);
+    listEntry.appendChild(listY);
+    listEntry.appendChild(listOffset);
+    listEntry.appendChild(listAzimuth);   
 
     let addSrc = document.getElementById("add");
     addSrc.style.display = "inline-block";
