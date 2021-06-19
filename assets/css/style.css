@@ -174,7 +174,7 @@ input {
     cursor: pointer;
 }
 
-.add {
+#add {
     display: none;
 }
 

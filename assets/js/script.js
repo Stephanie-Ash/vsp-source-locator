@@ -2,22 +2,28 @@
 // Get the Calculate button and add event listener
 
 document.addEventListener("DOMContentLoaded", function() {
-    let calculate = document.getElementById("calculate");
-
-    calculate.addEventListener("click", getValues);
+    document.getElementById("calculate").addEventListener("click", function() {
+        let buttonType = 'calculate';
+        getValues(buttonType);
+    })
 })
 
 /**
  * Gets and checks the input values from the DOM
  * and runs the appropriate calculation
  */
-function getValues() {
+function getValues(buttonType) {
     let whX = parseFloat(document.getElementById("wh-x").value);
     let whY = parseFloat(document.getElementById("wh-y").value);
     let srcX = parseFloat(document.getElementById("src-x").value);
     let srcY = parseFloat(document.getElementById("src-y").value);
     let srcOffset = parseFloat(document.getElementById("src-off").value);
     let srcAzimuth = parseFloat(document.getElementById("src-az").value);
+    let display;
+
+    if (buttonType === 'calculate') {
+        display = 'results';
+    } else display = 'list'; 
 
     if (!whX && whX !== 0 || !whY && whY !== 0) {
         alert("Enter Wellhead X and Y Coordinates");
@@ -26,9 +32,9 @@ function getValues() {
     } else if (whX === srcX && whY === srcY) {
         alert("Source at wellhead, no calculation required!")
     } else if ((srcX || srcX === 0) && (srcY || srcY === 0)) {
-        calculateSourceA(whX, whY, srcX, srcY);
+        calculateSourceA(whX, whY, srcX, srcY, display);
     } else if ((srcOffset || srcOffset === 0) && (srcAzimuth || srcAzimuth === 0)) {
-        calculateSourceB(whX, whY, srcOffset, srcAzimuth);
+        calculateSourceB(whX, whY, srcOffset, srcAzimuth, display);
     } else {
         alert("Enter Source X and Y or Offset and Azimuth");
     }
@@ -44,7 +50,7 @@ function getValues() {
  * Takes the wellhead and source X and Y inputs
  * and calculates the source offset and azimuth
  */
-function calculateSourceA(whX, whY, srcX, srcY) {
+function calculateSourceA(whX, whY, srcX, srcY, display) {
     let offsetX = srcX - whX;
     let offsetY = srcY - whY;
     let srcOffset;
@@ -80,14 +86,17 @@ function calculateSourceA(whX, whY, srcX, srcY) {
         azimuth: Math.round(srcAzimuth * Math.pow(10,1)) / Math.pow(10,1)
         };
     
-    displayResults(source);
+    if (display === 'results') {
+        displayResults(source);
+    } else displayList(source);
+       
 }
 
 /**
  * Takes the wellhead and source offset and azimuth inputs
  * and calculates the source X and Y
  */
-function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
+function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
     let srcAngle;
     let offsetX;
     let offsetY;
@@ -134,7 +143,9 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth) {
         azimuth: Math.round(srcAzimuth * Math.pow(10,1)) / Math.pow(10,1)
     };
 
-    displayResults(source);
+    if (display === 'results') {
+        displayResults(source);
+    } else displayList(source);
 }
 
 /**
@@ -148,4 +159,11 @@ function displayResults(source) {
     sourceInformation[1].innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
     sourceInformation[2].innerHTML = `Offset: &nbsp; ${source.offset}`;
     sourceInformation[3].innerHTML = `Azimuth: &nbsp; ${source.azimuth}&degN`;
+
+    let addSrc = document.getElementById("add");
+    addSrc.style.display = "inline-block";
+    addSrc.addEventListener("click", function() {
+        let buttonType = 'add';
+        getValues(buttonType);
+    })
 }
