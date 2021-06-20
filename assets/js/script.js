@@ -207,16 +207,37 @@ function displayList(source) {
 
 function drawChart() {
     document.getElementById('plan-area').style.display = "inherit";
+
+    let whX = parseFloat(document.getElementById("wh-x").value);
+    let whY = parseFloat(document.getElementById("wh-y").value);
+    let srcsXInitial = document.getElementsByClassName("srcX");
+    let srcsYInitial = document.getElementsByClassName("srcY");
+    let srcsX = [];
+    let srcsY = [];
+
+    for (let i = 0; i < srcsXInitial.length; i++) {
+        srcsX.push(parseFloat(srcsXInitial[i].textContent));
+    }
+
+    for (let i = 0; i < srcsYInitial.length; i++) {
+        srcsY.push(parseFloat(srcsYInitial[i].textContent));
+    }
+
+    let data = new google.visualization.DataTable();
+    data.addColumn('number', 'X Coordinate');
+    data.addColumn('number', 'Wellhead');
+    data.addColumn('number', 'Sources');
+
+    data.addRows([
+        [whX, whY, null]
+    ]);
+
+    for (let i = 0; i < srcsX.length; i++) {
+        data.addRows([
+            [srcsX[i], null, srcsY[i]]
+        ]);
+    }
     
-    let data = google.visualization.arrayToDataTable([
-        ['Age', 'Weight'],
-        [ 8,      12],
-        [ 4,      5.5],
-        [ 11,     14],
-        [ 4,      5],
-        [ 3,      3.5],
-        [ 6.5,    7]
-      ]);
 
       let options = {
         title: 'Age vs. Weight comparison',
