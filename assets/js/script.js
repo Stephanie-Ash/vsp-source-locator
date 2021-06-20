@@ -240,10 +240,10 @@ function drawChart() {
     
 
       let options = {
-        title: 'Age vs. Weight comparison',
-        hAxis: {title: 'Age', minValue: 0, maxValue: 15},
-        vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
-        legend: 'none'
+        title: 'Plan View of Well and Calculated Sources',
+        hAxis: {title: 'X Coordinate'},
+        vAxis: {title: 'Y Coordinate'},
+        legend: 'top'
       };
 
       let chart = new google.visualization.ScatterChart(document.getElementById('plan-area'));
