@@ -168,33 +168,20 @@ function displayResults(source) {
 
     let sourceInformation = document.getElementsByClassName("results");
 
-    sourceInformation[0].innerHTML = `X Coordinate: &nbsp; ${source.x}`;
-    sourceInformation[1].innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
-    sourceInformation[2].innerHTML = `Offset: &nbsp; ${source.offset}`;
-    sourceInformation[3].innerHTML = `Azimuth: &nbsp; ${source.azimuth}&degN`;
+    sourceInformation[0].innerHTML = `X Coordinate:<span class="srcX">${source.x}</span>`;
+    sourceInformation[1].innerHTML = `Y Coordinate:<span class="srcY">${source.y}</span>`;
+    sourceInformation[2].innerHTML = `Offset:<span>${source.offset}</span>`;
+    sourceInformation[3].innerHTML = `Azimuth:<span>${source.azimuth}&degN</span>`;
 
     let listEntry = document.createElement('li');
-    document.getElementById("list").appendChild(listEntry);
 
-    let listX = document.createElement('span');
-    let listY = document.createElement('span');
-    let listOffset = document.createElement('span');
-    let listAzimuth = document.createElement('span');
+    listEntry.innerHTML = `
+      <p class="results-list">X Coordinate:<span class="srcX">${source.x}</span></p>
+      <p class="results-list">Y Coordinate:<span class="srcY">${source.y}</span></p>
+      <p class="results-list">Offset:<span>${source.offset}</span></p>
+      <p class="results-list">Azimuth:<span>${source.azimuth}&degN</span></p>`;
 
-    listX.setAttribute("class", "results-list");
-    listY.setAttribute("class", "results-list");
-    listOffset.setAttribute("class", "results-list");
-    listAzimuth.setAttribute("class", "results-list");
-    
-    listX.innerHTML = `X Coordinate: &nbsp; ${source.x}`;
-    listY.innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
-    listOffset.innerHTML = `Offset: &nbsp; ${source.offset}`;
-    listAzimuth.innerHTML = `Azimuth: &nbsp; ${source.azimuth}&degN`;
-
-    listEntry.appendChild(listX);
-    listEntry.appendChild(listY);
-    listEntry.appendChild(listOffset);
-    listEntry.appendChild(listAzimuth);   
+    document.getElementById("list").appendChild(listEntry);   
 
     document.getElementById("add").style.display = "inline-block";
     document.getElementById("create").style.display = "inherit"
@@ -208,27 +195,14 @@ function displayList(source) {
     document.getElementById("result-list").style.display = "inherit";
 
     let listEntry = document.createElement('li');
-    document.getElementById("list").appendChild(listEntry);
 
-    let listX = document.createElement('span');
-    let listY = document.createElement('span');
-    let listOffset = document.createElement('span');
-    let listAzimuth = document.createElement('span');
+    listEntry.innerHTML = `
+      <p class="results-list">X Coordinate:<span class="srcX">${source.x}</span></p>
+      <p class="results-list">Y Coordinate:<span class="srcY">${source.y}</span></p>
+      <p class="results-list">Offset:<span>${source.offset}</span></p>
+      <p class="results-list">Azimuth:<span>${source.azimuth}&degN</span></p>`;
 
-    listX.setAttribute("class", "results-list");
-    listY.setAttribute("class", "results-list");
-    listOffset.setAttribute("class", "results-list");
-    listAzimuth.setAttribute("class", "results-list");
-    
-    listX.innerHTML = `X Coordinate: &nbsp; ${source.x}`;
-    listY.innerHTML = `Y Coordinate: &nbsp; ${source.y}`;
-    listOffset.innerHTML = `Offset: &nbsp; ${source.offset}`;
-    listAzimuth.innerHTML = `Azimuth: &nbsp; ${source.azimuth}&degN`;
-
-    listEntry.appendChild(listX);
-    listEntry.appendChild(listY);
-    listEntry.appendChild(listOffset);
-    listEntry.appendChild(listAzimuth);   
+    document.getElementById("list").appendChild(listEntry);  
 }
 
 function drawChart() {

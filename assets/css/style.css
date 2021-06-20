@@ -120,8 +120,13 @@ input {
 .results {
     font-size: 1.2rem;
     font-weight: bold;
+    display: inline-block;
     margin-left: 12px;
     margin-right: 12px;
+}
+
+.results > span {
+    margin-left: 10px;
 }
 
 /* result list */
@@ -147,8 +152,15 @@ input {
 .results-list {
     font-size: 1.2rem;
     font-weight: bold;
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
     margin-left: 12px;
     margin-right: 12px;
+}
+
+.results-list > span {
+    margin-left: 10px;
 }
 
 /* plan */
