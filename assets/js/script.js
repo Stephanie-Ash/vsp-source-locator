@@ -1,8 +1,17 @@
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(prepareCharting);
+
+function prepareCharting () {
+    document.getElementById("create").addEventListener("click", function() {
+        drawChart();
+    })
+} 
+
 // Wait for the DOM to load
 // Get the Calculate button and add event listener
 
 document.addEventListener("DOMContentLoaded", function() {
-    let buttons = document.getElementsByTagName("button");
+    let buttons = document.getElementsByClassName("calc-buttons");
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
@@ -13,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (this.getAttribute("data-type") === "add") {
                 buttonType = "add";
                 getValues(buttonType);
-            } else drawChart()
+            }
         })
     }
 })
