@@ -181,18 +181,18 @@ function displayResults(source) {
 
     let sourceInformation = document.getElementsByClassName("results");
 
-    sourceInformation[0].innerHTML = `X Coordinate:<span class="srcX">${source.x}</span>`;
-    sourceInformation[1].innerHTML = `Y Coordinate:<span class="srcY">${source.y}</span>`;
-    sourceInformation[2].innerHTML = `Offset:<span>${source.offset}</span>`;
-    sourceInformation[3].innerHTML = `Azimuth:<span>${source.azimuth}&degN</span>`;
+    sourceInformation[0].innerHTML = `X Coordinate:<span class="srcX">${source.x.toFixed(1)}</span>`;
+    sourceInformation[1].innerHTML = `Y Coordinate:<span class="srcY">${source.y.toFixed(1)}</span>`;
+    sourceInformation[2].innerHTML = `Offset:<span>${source.offset.toFixed(1)}</span>`;
+    sourceInformation[3].innerHTML = `Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span>`;
 
     let listEntry = document.createElement('li');
 
     listEntry.innerHTML = `
-      <p class="results-list">X Coordinate:<span class="srcX">${source.x}</span></p>
-      <p class="results-list">Y Coordinate:<span class="srcY">${source.y}</span></p>
-      <p class="results-list">Offset:<span>${source.offset}</span></p>
-      <p class="results-list">Azimuth:<span>${source.azimuth}&degN</span></p>`;
+      <p class="results-list">X Coordinate:<span class="srcX">${source.x.toFixed(1)}</span></p>
+      <p class="results-list">Y Coordinate:<span class="srcY">${source.y.toFixed(1)}</span></p>
+      <p class="results-list">Offset:<span>${source.offset.toFixed(1)}</span></p>
+      <p class="results-list">Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span></p>`;
 
     document.getElementById("list").appendChild(listEntry);   
 
@@ -210,10 +210,10 @@ function displayList(source) {
     let listEntry = document.createElement('li');
 
     listEntry.innerHTML = `
-      <p class="results-list">X Coordinate:<span class="srcX">${source.x}</span></p>
-      <p class="results-list">Y Coordinate:<span class="srcY">${source.y}</span></p>
-      <p class="results-list">Offset:<span>${source.offset}</span></p>
-      <p class="results-list">Azimuth:<span>${source.azimuth}&degN</span></p>`;
+      <p class="results-list">X Coordinate:<span class="srcX">${source.x.toFixed(1)}</span></p>
+      <p class="results-list">Y Coordinate:<span class="srcY">${source.y.toFixed(1)}</span></p>
+      <p class="results-list">Offset:<span>${source.offset.toFixed(1)}</span></p>
+      <p class="results-list">Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span></p>`;
 
     document.getElementById("list").appendChild(listEntry);  
 }
