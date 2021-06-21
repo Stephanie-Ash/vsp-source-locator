@@ -1,3 +1,6 @@
+// Wait for Google Charts package to load
+// Get the Create Plan button and add event listener
+
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(prepareCharting);
 
@@ -8,7 +11,7 @@ function prepareCharting () {
 } 
 
 // Wait for the DOM to load
-// Get the Calculate button and add event listener
+// Get the calculation buttons and add event listeners
 
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByClassName("calc-buttons");
@@ -28,8 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 /**
+ * Runs after either of the calculation buttons are clicked
  * Gets and checks the input values from the DOM
- * and runs the appropriate calculation
+ * and runs the appropriate calculation function
  */
 function getValues(buttonType) {
     let whX = parseFloat(document.getElementById("wh-x").value);
@@ -168,7 +172,7 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
 }
 
 /**
- * Displays calculated values in the DOM
+ * Displays the calculated values in the DOM
  */
 function displayResults(source) {
     document.getElementById("result-area").style.display = "inherit";
@@ -214,6 +218,10 @@ function displayList(source) {
     document.getElementById("list").appendChild(listEntry);  
 }
 
+/**
+ * Retrieves the calculated values from the DOM
+ * and plots them on a Google chart
+ */
 function drawChart() {
     document.getElementById('plan-area').style.display = "inherit";
 
