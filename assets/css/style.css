@@ -74,7 +74,6 @@ p {
 }
 
 .inputs {
-    display: inline-block;
     margin: 0;
     padding: 0;
 }
@@ -100,6 +99,7 @@ input {
 #separator {
     margin-left: 45px;
     margin-right: 20px;
+    display: inline-block;
 }
 
 /* result area */
@@ -202,3 +202,20 @@ input {
     display: none;
 }
 
+/* Media queries */
+
+/* For screens from 1325px wide and down */
+@media screen and (max-width: 1325px){
+    #separator {
+        display: block;
+        margin: 20px 25px 20px 25px;
+    }
+
+    .x-label {
+        padding-left: 37px;
+    }
+
+    .y-label {
+        padding-left: 53px;
+    }
+}
