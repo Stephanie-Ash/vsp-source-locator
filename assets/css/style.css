@@ -83,6 +83,10 @@ p {
     padding: 5px 0 5px 0;
 }
 
+.inputs > label {
+    padding-right: 5px;
+}
+
 input {
     height: 25px;
     width: 120px;
@@ -213,5 +217,22 @@ input {
 
     .y-label {
         padding-left: 53px;
+    }
+} 
+
+/* For screens from 700px wide and down */
+@media screen and (max-width: 700px) {
+    .inputs {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    .x-label {
+        padding-left: 0;
+    }
+
+    .y-label {
+        padding-left: 0;
     }
 }
