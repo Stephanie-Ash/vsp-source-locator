@@ -52,22 +52,34 @@
             <div id="plan-area"></div>
             <div class="input-wrapper">
                 <h2>Input Wellhead Location</h2>
-                <label for="wh-x" class="x-label">X =</label>
-                <input type="number" class="inputs" id="wh-x" onfocus="this.select()">
-                <label for="wh-y" class="y-label">Y =</label>
-                <input type="number" class="inputs" id="wh-y" onfocus="this.select()">
+                <div class="inputs">
+                    <label for="wh-x" class="x-label">X =</label>
+                    <input type="number" id="wh-x" onfocus="this.select()">
+                </div>
+                <div class="inputs">
+                    <label for="wh-y" class="y-label">Y =</label>
+                    <input type="number" id="wh-y" onfocus="this.select()">
+                </div>
             </div>
             <div class="input-wrapper">
                 <h2>Input Source Location</h2>
-                <label for="src-x" class="x-label">X =</label>
-                <input type="number" class="inputs input-box" id="src-x">
-                <label for="src-y" class="y-label">Y =</label>
-                <input type="number" class="inputs input-box" id="src-y">
-                <p class="inputs" id="separator">OR</p>
-                <label for="src-off">Offset =</label>
-                <input type="number" class="inputs input-box" id="src-off">
-                <label for="src-az">Azimuth =</label>
-                <input type="number" min="0" max="360" class="inputs input-box" id="src-az">
+                <div class="inputs">
+                    <label for="src-x" class="x-label">X =</label>
+                    <input type="number" class="input-box" id="src-x">
+                </div>
+                <div class="inputs">
+                    <label for="src-y" class="y-label">Y =</label>
+                    <input type="number" class="input-box" id="src-y">
+                </div>
+                <div class="inputs" id="separator">OR</div>
+                <div class="inputs">
+                    <label for="src-off">Offset =</label>
+                    <input type="number" class="input-box" id="src-off">
+                </div>
+                <div class="inputs">
+                    <label for="src-az">Azimuth =</label>
+                    <input type="number" min="0" max="360" class="input-box" id="src-az">
+                </div>  
             </div>
             <button data-type="calculate" class="buttons calc-buttons" id="calculate">Calculate!</button>
             <button data-type="add" class="buttons buttons-wide calc-buttons" id="add">Add Source</button>
