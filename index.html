@@ -38,10 +38,10 @@
             </div>
             <div id="result-area">
                 <h2>Calculated Source Locations</h2>
-                <p class="results"></p>
-                <p class="results"></p>
-                <p class="results"></p>
-                <p class="results"></p>
+                <p class="results x-result"></p>
+                <p class="results y-result"></p>
+                <p class="results offset-result"></p>
+                <p class="results azimuth-result"></p>
             </div>
             <div id="result-list">
                 <h2>Source List</h2>
@@ -52,27 +52,27 @@
             <div id="plan-area"></div>
             <div class="input-wrapper">
                 <h2>Input Wellhead Location</h2>
-                <div class="inputs">
-                    <label for="wh-x" class="x-label">X =</label>
+                <div class="inputs x-input">
+                    <label for="wh-x">X =</label>
                     <input type="number" id="wh-x" onfocus="this.select()">
                 </div>
-                <div class="inputs">
-                    <label for="wh-y" class="y-label">Y =</label>
+                <div class="inputs y-input">
+                    <label for="wh-y">Y =</label>
                     <input type="number" id="wh-y" onfocus="this.select()">
                 </div>
             </div>
             <div class="input-wrapper">
                 <h2>Input Source Location</h2>
-                <div class="inputs">
-                    <label for="src-x" class="x-label">X =</label>
+                <div class="inputs x-input">
+                    <label for="src-x">X =</label>
                     <input type="number" class="input-box" id="src-x">
                 </div>
-                <div class="inputs">
-                    <label for="src-y" class="y-label">Y =</label>
+                <div class="inputs y-input">
+                    <label for="src-y">Y =</label>
                     <input type="number" class="input-box" id="src-y">
                 </div>
                 <div class="inputs" id="separator">OR</div>
-                <div class="inputs">
+                <div class="inputs offset-input">
                     <label for="src-off">Offset =</label>
                     <input type="number" class="input-box" id="src-off">
                 </div>
