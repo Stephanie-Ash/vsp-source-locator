@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
 function getValues(buttonType) {
     let whX = parseFloat(document.getElementById("wh-x").value);
     let whY = parseFloat(document.getElementById("wh-y").value);
+    let previousWhX = parseFloat(document.getElementById("result-wh-x").innerHTML);
+    let previousWhY = parseFloat(document.getElementById("result-wh-y").innerHTML);
     let srcX = parseFloat(document.getElementById("src-x").value);
     let srcY = parseFloat(document.getElementById("src-y").value);
     let srcOffset = parseFloat(document.getElementById("src-off").value);
@@ -53,7 +55,9 @@ function getValues(buttonType) {
     } else if (srcAzimuth > 360 || srcAzimuth < 0) {
         alert("Source Azimuth is outside of acceptable 0 to 360 range");
     } else if (whX === srcX && whY === srcY) {
-        alert("Source at wellhead, no calculation required!")
+        alert("Source at wellhead, no calculation required!");
+    } else if (display === 'list' && (whX !== previousWhX || whY !== previousWhY)) {
+        alert("Wellhead X and Y locations do not match previous calculation");
     } else if ((srcX || srcX === 0) && (srcY || srcY === 0)) {
         calculateSourceA(whX, whY, srcX, srcY, display);
     } else if ((srcOffset || srcOffset === 0) && (srcAzimuth || srcAzimuth === 0)) {
@@ -107,10 +111,15 @@ function calculateSourceA(whX, whY, srcX, srcY, display) {
         y: Math.round(srcY * Math.pow(10,1)) / Math.pow(10,1),
         offset: Math.round(srcOffset * Math.pow(10,1)) / Math.pow(10,1),
         azimuth: Math.round(srcAzimuth * Math.pow(10,1)) / Math.pow(10,1)
-        };
+    };
+
+    let wellhead = {
+        x: whX,
+        y: whY
+    };
     
     if (display === 'results') {
-        displayResults(source);
+        displayResults(source, wellhead);
     } else displayList(source);
        
 }
@@ -166,19 +175,29 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
         azimuth: Math.round(srcAzimuth * Math.pow(10,1)) / Math.pow(10,1)
     };
 
+    let wellhead = {
+        x: whX,
+        y: whY
+    };
+
     if (display === 'results') {
-        displayResults(source);
+        displayResults(source, wellhead);
     } else displayList(source);
 }
 
 /**
  * Displays the calculated values in the DOM
  */
-function displayResults(source) {
+function displayResults(source, wellhead) {
     document.getElementById("result-area").style.display = "inherit";
     document.getElementById("list").innerHTML ="";
     document.getElementById("result-list").style.display = "none";
     document.getElementById("plan-area").style.display = "none";
+
+    let wellheadInformation = document.getElementsByClassName("wh-info");
+
+    wellheadInformation[0].innerHTML = `${wellhead.x}`;
+    wellheadInformation[1].innerHTML = `${wellhead.y}`;
 
     let sourceInformation = document.getElementsByClassName("results");
 
@@ -227,8 +246,8 @@ function displayList(source) {
 function drawChart() {
     document.getElementById('plan-area').style.display = "inherit";
 
-    let whX = parseFloat(document.getElementById("wh-x").value);
-    let whY = parseFloat(document.getElementById("wh-y").value);
+    let whX = parseFloat(document.getElementById("result-wh-x").innerHTML);
+    let whY = parseFloat(document.getElementById("result-wh-y").innerHTML);
     let srcsXInitial = document.getElementsByClassName("srcX");
     let srcsYInitial = document.getElementsByClassName("srcY");
     let srcsX = [];

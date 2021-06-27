@@ -126,6 +126,10 @@ input {
     margin-left: 10px;
 }
 
+.wh-info {
+    display: none;
+}
+
 /* result list */
 
 #result-list {
