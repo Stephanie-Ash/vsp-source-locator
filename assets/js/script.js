@@ -255,15 +255,25 @@ function drawChart() {
         ]);
     }
     
-
       let options = {
         title: 'Plan View of Well and Calculated Sources',
         hAxis: {title: 'X Coordinate'},
         vAxis: {title: 'Y Coordinate'},
-        legend: 'top'
+        hAxis: {gridlines: {color: '#1d1e20'}},
+        vAxis: {gridlines: {color: '#1d1e20'}},
+        legend: 'bottom'
       };
 
       let chart = new google.visualization.ScatterChart(document.getElementById('plan-area'));
 
       chart.draw(data, options);
 }
+
+window.addEventListener('resize', function(){
+    let chart = document.getElementById('plan-area');
+    let chartStatus = window.getComputedStyle(chart).display;
+
+    if (chartStatus !== 'none') {
+        drawChart();
+    }
+})

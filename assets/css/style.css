@@ -161,10 +161,16 @@ input {
 
 /* plan */
 
+#plan-wrapper {
+    width: 80%;
+}
+
 #plan-area {
-    width: 500px;
+    max-width: 600px;
     height: 500px;
+    margin-left: 10px;
     display: none;
+    border: 1px solid #1d1e20;
 }
 
 /* buttons */
