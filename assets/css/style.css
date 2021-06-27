@@ -8,7 +8,7 @@ body {
     background-size: cover;
     background-position: center;
     font-family: 'Inter', sans-serif;
-    color: #1d1e20; 
+    color: #1d1e20;
 }
 
 h1 {
@@ -46,7 +46,7 @@ p {
     margin: 10px 5px 0 5px;
 }
 
-#heading > h1 {
+#heading>h1 {
     margin: 0 5px 5px 5px;
     padding: 2.5px 5px 5px 5px;
 }
@@ -78,12 +78,12 @@ p {
     margin-left: 25px;
 }
 
-.input-wrapper > h2 {
+.input-wrapper>h2 {
     margin: 30px 10px 10px 10px;
     padding: 5px 0 5px 0;
 }
 
-.inputs > label {
+.inputs>label {
     padding-right: 5px;
 }
 
@@ -109,7 +109,7 @@ input {
     display: none;
 }
 
-#result-area > h2 {
+#result-area>h2 {
     margin: 30px 10px 10px 10px;
     padding: 5px 0 5px 0;
 }
@@ -122,7 +122,7 @@ input {
     margin-right: 12px;
 }
 
-.results > span {
+.results>span {
     margin-left: 10px;
 }
 
@@ -135,7 +135,7 @@ input {
     display: none;
 }
 
-#result-list > h2 {
+#result-list>h2 {
     margin: 30px 10px 10px 10px;
     padding: 5px 0 5px 0;
 }
@@ -155,14 +155,14 @@ input {
     margin-right: 12px;
 }
 
-.results-list > span {
+.results-list>span {
     margin-left: 10px;
 }
 
 /* plan */
 
 #plan-wrapper {
-    width: 80%;
+    width: 100%;
 }
 
 #plan-area {
@@ -207,7 +207,21 @@ input {
 /* Media queries */
 
 /* For screens from 1340px wide and down */
-@media screen and (max-width: 1340px){
+@media screen and (max-width: 1340px) {
+    .locator-area {
+        width: 90%;
+    }
+}
+
+/* For screens from 1200px wide and down */
+@media screen and (max-width: 1200px) {
+    .locator-area {
+        width: 95%;
+    }
+}
+
+/* For screens from 1135px wide and down */
+@media screen and (max-width: 1135px) {
     #separator {
         display: block;
         margin: 20px 25px 20px 25px;
@@ -220,10 +234,10 @@ input {
     .y-input {
         padding-left: 53px;
     }
-} 
+}
 
-/* For screens from 1300px wide and down */
-@media screen and (max-width: 1300px) {
+/* For screens from 1075px wide and down */
+@media screen and (max-width: 1075px) {
     .results {
         font-size: 1rem;
     }
@@ -237,8 +251,8 @@ input {
     }
 }
 
-/* For screens from 1145px wide and down */
-@media screen and (max-width: 1145px) {
+/* For screens from 930px wide and down */
+@media screen and (max-width: 930px) {
     .results {
         display: block;
         margin-top: 5px;
@@ -249,13 +263,13 @@ input {
         display: block;
     }
 
-    #list > li {
+    #list>li {
         padding-bottom: 10px;
     }
 }
 
-/* For screens from 700px wide and down */
-@media screen and (max-width: 700px) {
+/* For screens from 600px wide and down */
+@media screen and (max-width: 600px) {
     .inputs {
         display: block;
         margin-top: 15px;
@@ -268,5 +282,10 @@ input {
 
     .x-input {
         padding-left: 53px;
+    }
+
+    #plan-area {
+        height: 450px;
+        margin-left: 0;
     }
 }
