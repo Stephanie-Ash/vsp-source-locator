@@ -178,6 +178,7 @@ function displayResults(source) {
     document.getElementById("result-area").style.display = "inherit";
     document.getElementById("list").innerHTML ="";
     document.getElementById("result-list").style.display = "none";
+    document.getElementById("plan-area").style.display = "none";
 
     let sourceInformation = document.getElementsByClassName("results");
 
@@ -205,6 +206,7 @@ function displayResults(source) {
  */
 function displayList(source) {
     document.getElementById("result-area").style.display = "none";
+    document.getElementById("plan-area").style.display = "none";
     document.getElementById("result-list").style.display = "inherit";
 
     let listEntry = document.createElement('li');
