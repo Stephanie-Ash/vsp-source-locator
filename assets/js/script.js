@@ -58,13 +58,13 @@ function getValues(buttonType) {
         alert("Enter Wellhead X and Y Coordinates");
     } else if (srcAzimuth > 360 || srcAzimuth < 0) {
         alert("Source Azimuth is outside of acceptable 0 to 360 range");
-    } else if (whX === srcX && whY === srcY) {
+    } else if (whX === srcX && whY === srcY || srcOffset === 0) {
         alert("Source at wellhead, no calculation required!");
     } else if (display === 'list' && (whX !== previousWhX || whY !== previousWhY)) {
         alert("Wellhead X and Y locations do not match previous calculation");
     } else if ((srcX || srcX === 0) && (srcY || srcY === 0)) {
         calculateSourceA(whX, whY, srcX, srcY, display);
-    } else if ((srcOffset || srcOffset === 0) && (srcAzimuth || srcAzimuth === 0)) {
+    } else if (srcOffset && (srcAzimuth || srcAzimuth === 0)) {
         calculateSourceB(whX, whY, srcOffset, srcAzimuth, display);
     } else {
         alert("Enter Source X and Y or Offset and Azimuth");
@@ -141,9 +141,7 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
     let offsetX;
     let offsetY;
 
-    if (srcOffset === 0) {
-        alert("Source at Wellhead, no calculation required!");
-    } else if (srcAzimuth === 360 || srcAzimuth === 0) {
+    if (srcAzimuth === 360 || srcAzimuth === 0) {
         offsetX = 0;
         offsetY = srcOffset;
     } else if (srcAzimuth === 90) {
