@@ -105,7 +105,6 @@ input {
 /* result area */
 
 #result-area {
-    padding-bottom: 20px;
     display: none;
 }
 
@@ -133,9 +132,6 @@ input {
 /* result list */
 
 #result-list {
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 20px;
     display: none;
 }
 
@@ -154,7 +150,7 @@ input {
     font-weight: bold;
     display: inline-block;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     margin-left: 12px;
     margin-right: 12px;
 }
@@ -316,5 +312,73 @@ input {
 @media screen and (max-width: 460px) {
     h1 {
         font-size: 2rem;
+    }
+}
+
+/* For screens from 420px wide and down */
+@media screen and (max-width: 420px) {
+    #plan-area {
+        height: 350px;
+    }
+}
+
+/* For screens from 400px wide and down */
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* For screens from 311px wide and down */
+@media screen and (max-width: 311px) {
+    #add {
+       margin-top: 0px; 
+    }
+}
+
+/* For screens from 300px wide and down */
+@media screen and (max-width: 300px) {
+    body {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .locator-area {
+       width: 100%;
+    }
+}
+
+/* For screens from 290px wide and down */
+@media screen and (max-width: 290px) {
+    .inputs {
+        margin-left: 0;
+    }
+
+    .input-wrapper > h2 {
+        margin-left: 0;
+    }
+
+    #result-area > h2 {
+        margin-left: 0;
+    }
+
+    #result-list > h2 {
+        margin-left: 0;
+    }
+
+    .results {
+        margin-left: 0;
+    }
+
+    ol {
+        padding-left: 20px;
+    }
+
+    .results-list {
+        margin-left: 2px;
     }
 }
