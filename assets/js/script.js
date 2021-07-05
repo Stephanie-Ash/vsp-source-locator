@@ -125,7 +125,7 @@ function calculateSourceA(whX, whY, srcX, srcY, display) {
         y: whY
     };
     
-    //Select display results function based on which button was clicked
+    //Call correct display results function based on which button was clicked
     if (display === 'results') {
         displayResults(source, wellhead);
     } else displayList(source);
@@ -141,6 +141,7 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
     let offsetX;
     let offsetY;
 
+    //Check for north, south, east or west locations then calculate source X and Y
     if (srcAzimuth === 360 || srcAzimuth === 0) {
         offsetX = 0;
         offsetY = srcOffset;
@@ -174,6 +175,7 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
     let srcX = offsetX + whX;
     let srcY = offsetY + whY;
 
+    //Save calculated results in objects
     let source = {
         x: Math.round(srcX * Math.pow(10,1)) / Math.pow(10,1),
         y: Math.round(srcY * Math.pow(10,1)) / Math.pow(10,1),
@@ -186,6 +188,7 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
         y: whY
     };
 
+    //Call correct display results function based on which button was clicked
     if (display === 'results') {
         displayResults(source, wellhead);
     } else displayList(source);
@@ -195,16 +198,22 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
  * Displays the calculated values in the DOM
  */
 function displayResults(source, wellhead) {
+    //Display result area
     document.getElementById("result-area").style.display = "inherit";
+
+    //Clear source list and turn off chart display
     document.getElementById("list").innerHTML ="";
     document.getElementById("result-list").style.display = "none";
     document.getElementById("plan-area").style.display = "none";
 
+    //Add wellhead locations to the DOM for use in drawChart function
+    //Values won't be displayed
     let wellheadInformation = document.getElementsByClassName("wh-info");
 
     wellheadInformation[0].innerHTML = `${wellhead.x}`;
     wellheadInformation[1].innerHTML = `${wellhead.y}`;
 
+    //Add calculated source location information to the DOM
     let sourceInformation = document.getElementsByClassName("results");
 
     sourceInformation[0].innerHTML = `X Location:<span class="srcX">${source.x.toFixed(1)}</span>`;
@@ -212,6 +221,7 @@ function displayResults(source, wellhead) {
     sourceInformation[2].innerHTML = `Offset:<span>${source.offset.toFixed(1)}</span>`;
     sourceInformation[3].innerHTML = `Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span>`;
 
+    //Add calculated source location to a list ready for display is Add Source button clicked
     let listEntry = document.createElement('li');
 
     listEntry.innerHTML = `
@@ -222,6 +232,7 @@ function displayResults(source, wellhead) {
 
     document.getElementById("list").appendChild(listEntry);   
 
+    //Set additional buttons to display
     document.getElementById("add").style.display = "inline-block";
     document.getElementById("create").style.display = "inherit"
 }
@@ -230,10 +241,12 @@ function displayResults(source, wellhead) {
  * Appends calculated values to an html list
  */
 function displayList(source) {
+    //Turn off result area and chart display and display list
     document.getElementById("result-area").style.display = "none";
     document.getElementById("plan-area").style.display = "none";
     document.getElementById("result-list").style.display = "inherit";
 
+    //Append calculated source information to source list
     let listEntry = document.createElement('li');
 
     listEntry.innerHTML = `
@@ -252,6 +265,7 @@ function displayList(source) {
 function drawChart() {
     document.getElementById('plan-area').style.display = "inherit";
 
+    //Get source and wellhead locations
     let whX = parseFloat(document.getElementById("result-wh-x").innerHTML);
     let whY = parseFloat(document.getElementById("result-wh-y").innerHTML);
     let srcsXInitial = document.getElementsByClassName("srcX");
@@ -259,6 +273,7 @@ function drawChart() {
     let srcsX = [];
     let srcsY = [];
 
+    //Take source className collections and add X and Y values to arrays
     for (let i = 0; i < srcsXInitial.length; i++) {
         srcsX.push(parseFloat(srcsXInitial[i].textContent));
     }
@@ -267,6 +282,7 @@ function drawChart() {
         srcsY.push(parseFloat(srcsYInitial[i].textContent));
     }
 
+    //Create the data table for the chart
     let data = new google.visualization.DataTable();
     data.addColumn('number', 'X Coordinate');
     data.addColumn('number', 'Wellhead');
@@ -282,20 +298,22 @@ function drawChart() {
         ]);
     }
     
-      let options = {
+    //Set chart display parameters and draw chart
+    let options = {
         title: 'Plan View of Well and Calculated Sources',
         hAxis: {title: 'X Coordinate'},
         vAxis: {title: 'Y Coordinate'},
         hAxis: {gridlines: {color: '#1d1e20'}},
         vAxis: {gridlines: {color: '#1d1e20'}},
         legend: 'bottom'
-      };
+    };
 
       let chart = new google.visualization.ScatterChart(document.getElementById('plan-area'));
 
       chart.draw(data, options);
 }
 
+//Redraws the chart if the window is resized to make it more responsive
 window.addEventListener('resize', function(){
     let chart = document.getElementById('plan-area');
     let chartStatus = window.getComputedStyle(chart).display;
