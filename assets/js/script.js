@@ -33,9 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
 /**
  * Runs after either of the calculation buttons are clicked
  * Gets and checks the input values from the DOM
- * and runs the appropriate calculation function
+ * and calls the appropriate calculation function
  */
 function getValues(buttonType) {
+    //Get user inputs
     let whX = parseFloat(document.getElementById("wh-x").value);
     let whY = parseFloat(document.getElementById("wh-y").value);
     let previousWhX = parseFloat(document.getElementById("result-wh-x").innerHTML);
@@ -46,10 +47,13 @@ function getValues(buttonType) {
     let srcAzimuth = parseFloat(document.getElementById("src-az").value);
     let display;
 
+    /* Set a variable based on which button was clicked.
+    will be used to define which result display function to use */
     if (buttonType === 'calculate') {
         display = 'results';
-    } else display = 'list'; 
-
+    } else display = 'list';
+    
+    //Test input values and call appropriate calulation function
     if (!whX && whX !== 0 || !whY && whY !== 0) {
         alert("Enter Wellhead X and Y Coordinates");
     } else if (srcAzimuth > 360 || srcAzimuth < 0) {
@@ -66,6 +70,7 @@ function getValues(buttonType) {
         alert("Enter Source X and Y or Offset and Azimuth");
     }
 
+    //Clear source information input boxes
     let inputs = document.getElementsByClassName("input-box")
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].value = "";
@@ -83,6 +88,7 @@ function calculateSourceA(whX, whY, srcX, srcY, display) {
     let srcOffset;
     let srcAzimuth;
 
+    //Check for north, south, east or west locations then calculate source offset and azimuth
     if (offsetX === 0 && offsetY < 0) {
         srcOffset = offsetY;
         srcAzimuth = 180;
@@ -106,6 +112,7 @@ function calculateSourceA(whX, whY, srcX, srcY, display) {
         }
     }
     
+    //Save calculated results in objects
     let source = {
         x: Math.round(srcX * Math.pow(10,1)) / Math.pow(10,1),
         y: Math.round(srcY * Math.pow(10,1)) / Math.pow(10,1),
@@ -118,6 +125,7 @@ function calculateSourceA(whX, whY, srcX, srcY, display) {
         y: whY
     };
     
+    //Select display results function based on which button was clicked
     if (display === 'results') {
         displayResults(source, wellhead);
     } else displayList(source);

@@ -53,7 +53,7 @@ p {
 
 /* input area general styling */
 
-#input-area {
+#calculator-area {
     font-size: 1rem;
     width: 90%;
     margin-left: auto;
@@ -337,7 +337,7 @@ input {
         width: 100%;
     }
 
-    #input-area {
+    #calculator-area {
         width: 95%;
     }
 }

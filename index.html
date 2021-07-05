@@ -20,7 +20,7 @@
                 VSP Source Locator
             </h1>
         </div>
-        <div id="input-area">
+        <div id="calculator-area">
             <div id="instruction-area">
                 <h2>Instructions</h2>
                 <p>This is a utility to calculate the location of a single or selection of VSP sources. It uses either
@@ -37,6 +37,11 @@
                     source locations to allow for a QC of the calculated information.
                 </p>
             </div>
+
+            <!--
+                Not displayed on load.
+                Calculated source information displayed here after Calculate! button click.
+            -->
             <div id="result-area">
                 <h2>Calculated Source Locations</h2>
                 <p class="wh-info" id="result-wh-x"></p>
@@ -46,15 +51,27 @@
                 <p class="results"></p>
                 <p class="results"></p>
             </div>
+
+            <!--
+                Not displayed on load.
+                Calculated source list displayed here after Add Source button click
+            -->
             <div id="result-list">
                 <h2>Source List</h2>
                 <ol id="list">
                 </ol>
             </div>
+
+            <!--
+                Button displayed after initial calculation.
+                Generates google chart of calculated locations.
+            -->
             <button data-type="create" class="buttons buttons-wide" id="create">Create Plan</button>
             <div id="plan-wrapper">
                 <div id="plan-area"></div>
             </div>
+
+            <!--User input boxes-->
             <div class="input-wrapper">
                 <h2>Input Wellhead Location</h2>
                 <div class="inputs x-input">
@@ -86,13 +103,18 @@
                     <input type="number" min="0" max="360" class="input-box" id="src-az">
                 </div>
             </div>
+
+            <!--Button to calculate source location-->
             <button data-type="calculate" class="buttons calc-buttons" id="calculate">Calculate!</button>
+
+            <!--Button to calculate and populate source list. Displays after initial calculation.-->
             <button data-type="add" class="buttons buttons-wide calc-buttons" id="add">Add Source</button>
         </div>
     </div>
 
-
+    <!--Load Google Charts API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <script src="assets/js/script.js"></script>
 </body>
 
