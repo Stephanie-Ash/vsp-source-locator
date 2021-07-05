@@ -209,10 +209,10 @@ function displayResults(source, wellhead) {
     let listEntry = document.createElement('li');
 
     listEntry.innerHTML = `
-      <p class="results-list">X Location:<span class="srcX">${source.x.toFixed(1)}</span></p>
-      <p class="results-list">Y Location:<span class="srcY">${source.y.toFixed(1)}</span></p>
-      <p class="results-list">Offset:<span>${source.offset.toFixed(1)}</span></p>
-      <p class="results-list">Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span></p>`;
+      <p class="results-list list-x">X Location:<span class="srcX">${source.x.toFixed(1)}</span></p>
+      <p class="results-list list-y">Y Location:<span class="srcY">${source.y.toFixed(1)}</span></p>
+      <p class="results-list list-off">Offset:<span>${source.offset.toFixed(1)}</span></p>
+      <p class="results-list list-az">Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span></p>`;
 
     document.getElementById("list").appendChild(listEntry);   
 
@@ -231,10 +231,10 @@ function displayList(source) {
     let listEntry = document.createElement('li');
 
     listEntry.innerHTML = `
-      <p class="results-list">X Location:<span class="srcX">${source.x.toFixed(1)}</span></p>
-      <p class="results-list">Y Location:<span class="srcY">${source.y.toFixed(1)}</span></p>
-      <p class="results-list">Offset:<span>${source.offset.toFixed(1)}</span></p>
-      <p class="results-list">Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span></p>`;
+      <p class="results-list list-x">X Location:<span class="srcX">${source.x.toFixed(1)}</span></p>
+      <p class="results-list list-y">Y Location:<span class="srcY">${source.y.toFixed(1)}</span></p>
+      <p class="results-list list-off">Offset:<span>${source.offset.toFixed(1)}</span></p>
+      <p class="results-list list-az">Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span></p>`;
 
     document.getElementById("list").appendChild(listEntry);  
 }
