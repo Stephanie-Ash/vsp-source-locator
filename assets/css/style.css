@@ -155,15 +155,15 @@ input {
 
 .list-x {
     margin-left: 12px;
-    width: 25%;
+    width: 20%;
 }
 
 .list-y {
-    width: 25%;
+    width: 21%;
 }
 
 .list-off, .list-az {
-    width: 20%;
+    width: 15%;
 }
 
 .results-list > span {
@@ -217,6 +217,21 @@ input {
 
 /* Media queries */
 
+/* For screens from 1600px wide and down */
+@media screen and (max-width: 1600px) {
+    .list-x {
+        width: 25%;
+    }
+    
+    .list-y {
+        width: 26%;
+    }
+    
+    .list-off, .list-az {
+        width: 20%;
+    }
+}
+
 /* For screens from 1340px wide and down */
 @media screen and (max-width: 1340px) {
     .locator-area {
@@ -247,12 +262,8 @@ input {
     }
 }
 
-/* For screens from 1075px wide and down */
-@media screen and (max-width: 1075px) {
-    .results {
-        font-size: 1rem;
-    }
-
+/* For screens from 1120px wide and down */
+@media screen and (max-width: 1120px) {
     #list {
         font-size: 1rem;
     }
@@ -262,20 +273,32 @@ input {
     }
 }
 
+/* For screens from 1075px wide and down */
+@media screen and (max-width: 1075px) {
+    .results {
+        font-size: 1rem;
+    }
+}
+
+/* For screens from 980px wide and down */
+@media screen and (max-width: 980px) {
+    .results-list {
+        display: block;
+        margin-left: 12px;
+        width: 100%;
+    }
+
+    #list>li {
+        padding-bottom: 10px;
+    }
+}
+
 /* For screens from 930px wide and down */
 @media screen and (max-width: 930px) {
     .results {
         display: block;
         margin-top: 5px;
         margin-bottom: 5px;
-    }
-
-    .results-list {
-        display: block;
-    }
-
-    #list>li {
-        padding-bottom: 10px;
     }
 }
 
