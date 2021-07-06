@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
-            let buttonType;
+            let buttonType; //Create variable based on button type clicked for use in later functions
             if (this.getAttribute("data-type") === "calculate") {
                 buttonType = "calculate";
                 getValues(buttonType);
@@ -53,7 +53,7 @@ function getValues(buttonType) {
         display = 'results';
     } else display = 'list';
     
-    //Test input values and call appropriate calulation function
+    //Test input data for missing or problematic values and call appropriate calulation function
     if (!whX && whX !== 0 || !whY && whY !== 0) {
         alert("Enter Wellhead X and Y Coordinates");
     } else if (srcAzimuth > 360 || srcAzimuth < 0) {
@@ -71,6 +71,7 @@ function getValues(buttonType) {
     }
 
     //Clear source information input boxes
+    //Wellhead boxes left populated for use if Add Source button clicked
     let inputs = document.getElementsByClassName("input-box");
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].value = "";
@@ -83,7 +84,7 @@ function getValues(buttonType) {
  * and calculates the source offset and azimuth
  */
 function calculateSourceA(whX, whY, srcX, srcY, display) {
-    let offsetX = srcX - whX;
+    let offsetX = srcX - whX; //Calculate source X and Y offset from wellhead
     let offsetY = srcY - whY;
     let srcOffset;
     let srcAzimuth;
@@ -105,6 +106,7 @@ function calculateSourceA(whX, whY, srcX, srcY, display) {
         srcOffset = (offsetX ** 2 + offsetY ** 2) ** (1/2);
         let srcAngle = (Math.atan(offsetY / offsetX)) / (Math.PI / 180);
 
+        //Calculate source azimuth based on which side of well (in X) source is
         if (offsetX < 1) {
             srcAzimuth = 270 - srcAngle;
         } else {
@@ -172,6 +174,7 @@ function calculateSourceB(whX, whY, srcOffset, srcAzimuth, display) {
         }
     }
 
+    //Calculate source locations from offsets
     let srcX = offsetX + whX;
     let srcY = offsetY + whY;
 
@@ -221,7 +224,7 @@ function displayResults(source, wellhead) {
     sourceInformation[2].innerHTML = `Offset:<span>${source.offset.toFixed(1)}</span>`;
     sourceInformation[3].innerHTML = `Azimuth:<span>${source.azimuth.toFixed(1)}&degN</span>`;
 
-    //Add calculated source location to a list ready for display is Add Source button clicked
+    //Add calculated source location to a list ready for display if Add Source button clicked
     let listEntry = document.createElement('li');
 
     listEntry.innerHTML = `
@@ -263,6 +266,7 @@ function displayList(source) {
  * and plots them on a Google chart
  */
 function drawChart() {
+    //Turn on chart display
     document.getElementById('plan-area').style.display = "inherit";
 
     //Get source and wellhead locations
@@ -273,7 +277,7 @@ function drawChart() {
     let srcsX = [];
     let srcsY = [];
 
-    //Take source className collections and add X and Y values to arrays
+    //Take source className collections and add the X and Y values to arrays
     for (let i = 0; i < srcsXInitial.length; i++) {
         srcsX.push(parseFloat(srcsXInitial[i].textContent));
     }
