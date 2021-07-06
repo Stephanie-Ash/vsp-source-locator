@@ -7,7 +7,7 @@ google.charts.setOnLoadCallback(prepareCharting);
 function prepareCharting () {
     document.getElementById("create").addEventListener("click", function() {
         drawChart();
-    })
+    });
 } 
 
 // Wait for the DOM to load
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 buttonType = "add";
                 getValues(buttonType);
             }
-        })
+        });
     }
-})
+});
 
 /**
  * Runs after either of the calculation buttons are clicked
@@ -71,7 +71,7 @@ function getValues(buttonType) {
     }
 
     //Clear source information input boxes
-    let inputs = document.getElementsByClassName("input-box")
+    let inputs = document.getElementsByClassName("input-box");
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].value = "";
     }
@@ -234,7 +234,7 @@ function displayResults(source, wellhead) {
 
     //Set additional buttons to display
     document.getElementById("add").style.display = "inline-block";
-    document.getElementById("create").style.display = "inherit"
+    document.getElementById("create").style.display = "inherit";
 }
 
 /**
@@ -301,10 +301,8 @@ function drawChart() {
     //Set chart display parameters and draw chart
     let options = {
         title: 'Plan View of Well and Calculated Sources',
-        hAxis: {title: 'X Coordinate'},
-        vAxis: {title: 'Y Coordinate'},
-        hAxis: {gridlines: {color: '#1d1e20'}},
-        vAxis: {gridlines: {color: '#1d1e20'}},
+        hAxis: {title: 'X Coordinate', gridlines: {color: '#1d1e20'}},
+        vAxis: {title: 'Y Coordinate', gridlines: {color: '#1d1e20'}},
         legend: 'bottom'
     };
 
@@ -321,4 +319,4 @@ window.addEventListener('resize', function(){
     if (chartStatus !== 'none') {
         drawChart();
     }
-})
+});
