@@ -5,3 +5,9 @@ This website calculates the location of a single or series of VSP sources in rel
 [The live project can be found here.](https://stephanie-ash.github.io/vsp-source-locator/)
 
 ![Responsive Site](assets/screenshots/vsp-source-locator-responsive.jpg)
+
+## User Stories
+
+  1. As someone planning a multi source VSP survey I want to calculate the planned source locations in various formats ready to provide to the field engineer. I want to make a visual check of the planned locations to see if they are where I expect in relation to the wellhead.
+  2. As a field engineer I want to convert the source UTM coordinates recorded with the data into more useful offset and azimuth values for the report I am generating. I want to check that the resulting locations are where I expect.
+  3. As a VSP data processor I want to convert the source location information provided with the recorded data into the format required by my processing software.
