@@ -196,6 +196,7 @@ input {
     color: rgb(229, 234, 242);
     background-color: #254655;
     margin: 30px 10px 30px 10px;
+    padding: 0;
 }
 
 .buttons-wide {
