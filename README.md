@@ -112,10 +112,7 @@ This website calculates the location of a single or series of VSP sources in rel
 * The site was tested on various screen sizes using the Chrome Developer tools and media queries added.
     * The largest likely calculated values have been considered when setting these display parameters.
 * Friends and family members were asked to review the site on various mobile devices to determine if the site was suitably responsive.
-
-### Unfixed Bugs
-
-* The buttons do not display as expected on Apple devices.
+    * The buttons did not display correctly on Apple devices. This was solved by setting the padding to zero.
 
 ## Deployment
 
