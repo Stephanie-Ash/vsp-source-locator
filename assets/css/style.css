@@ -26,7 +26,7 @@ p {
 /* main locator area */
 
 .locator-area {
-    background-color: rgba(229, 234, 242, 0.9);
+    background-color: rgba(229, 234, 242, 0.85);
     width: 80%;
     box-sizing: border-box;
     margin-left: auto;
